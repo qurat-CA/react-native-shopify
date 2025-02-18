@@ -1,20 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 
-import {getProducts} from '../../shopify/api';
 import {Container, ProductCard, Typography} from '../../components';
 import {Colors} from '../../config/color';
 import Metrix from '../../config/metrix';
+import {getProducts} from '../../shopify/api';
+import {fetchAllProducts} from '../../shopify';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
 
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const data = await getProducts();
+  //     setProducts(data);
+  //   };
+  //   fetchProducts();
+  // }, []);
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await getProducts();
-      setProducts(data);
+    const fetchData = async () => {
+      try {
+        const data = await fetchAllProducts();
+        console.log(data);
+
+        // setProducts(data);
+      } catch (error) {
+        console.error('Error fetching products: ', error);
+      }
     };
-    fetchProducts();
+    fetchData();
   }, []);
 
   return (
@@ -25,7 +40,6 @@ const Home = () => {
 
       <FlatList
         data={products}
-        // keyExtractor={item => item.node.id}
         numColumns={2}
         columnWrapperStyle={{justifyContent: 'space-between'}}
         showsVerticalScrollIndicator={false}

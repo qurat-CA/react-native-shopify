@@ -1,4 +1,4 @@
-import {ParamListBase} from '@react-navigation/native';
+import {ParamListBase, RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 export type RootStackParamList = {
@@ -8,8 +8,13 @@ export type RootStackParamList = {
 
 export type AppStackParamList = {
   HomeTabs: undefined;
-  Home: undefined;
+  Home: {productId: number};
 };
 
 export type NavigationStackType<T extends ParamListBase = RootStackParamList> =
   StackNavigationProp<T>;
+
+export type ProductDetailProps = {
+  route: RouteProp<AppStackParamList, 'Home'>;
+  navigation: StackNavigationProp<AppStackParamList, 'Home'>;
+};

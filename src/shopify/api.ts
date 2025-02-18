@@ -49,4 +49,50 @@ function getProducts() {
     });
 }
 
-export {getProducts};
+function getSingleProduct(productId: number) {
+  const query = `
+    {
+      product(id: ${productId}) {
+        id
+        title
+        descriptionHtml
+        images(first: 1) {
+          edges {
+            node {
+              src
+            }
+          }
+        }
+        variants(first: 1) {
+          edges {
+            node {
+              priceV2 {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  return axios
+    .post(
+      SHOPIFY_API_URL,
+      {query},
+      {
+        headers: {
+          'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    .then(response => response)
+    .catch(error => {
+      console.error('Error fetching product:', error);
+      return null;
+    });
+}
+
+export {getProducts, getSingleProduct};
