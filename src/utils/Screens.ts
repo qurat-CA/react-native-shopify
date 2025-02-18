@@ -1,5 +1,6 @@
 import {BottomTab} from '../components';
-import {Signin, Signup, Home, Products} from '../container';
+import {Signin, Signup, ProductDetail} from '../container';
+import HomeTabs from '../navigation/BottomTabs';
 
 export const Screens = {
   Signin: 'Signin',
@@ -8,6 +9,8 @@ export const Screens = {
   MainNavigation: 'MainNavigation',
   BottomTab: 'BottomTab',
   Home: 'Home',
+  Products: 'Products',
+  ProductDetail: 'ProductDetail',
 };
 
 type ScreenType = {
@@ -21,7 +24,8 @@ const authScreens: ScreenType[] = [
 ];
 
 const appScreens: ScreenType[] = [
-  {name: Screens.BottomTab, component: BottomTab},
+  {name: Screens.BottomTab, component: HomeTabs},
+  {name: Screens.ProductDetail, component: ProductDetail},
 ];
 
 export {authScreens, appScreens};

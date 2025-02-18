@@ -1,14 +1,14 @@
 import {Easing} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {appScreens, Screens} from "../utils/Screens";
+import {appScreens, Screens} from '../utils/Screens';
 
 const AppStack = createStackNavigator();
 
 const MainNavigation = () => {
   return (
     <AppStack.Navigator
-      initialRouteName={Screens.Home}
+      initialRouteName={Screens.BottomTab}
       screenOptions={{
         headerShown: false,
         cardStyleInterpolator: ({current, layouts}) => {

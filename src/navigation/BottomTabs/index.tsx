@@ -12,6 +12,7 @@ import {Colors} from '../../config/color/index';
 import styles from './styles';
 import {BottomTab, Typography} from '../../components';
 import Metrix from '../../config/metrix';
+import {TAB_SVGS} from '../../config/images';
 
 const HomeTabNavigation = createBottomTabNavigator();
 
@@ -77,20 +78,12 @@ const HomeTabs = () => {
                   onPress={onPress}>
                   {!isFocused && bottomTabConfig[label]?.icon(isFocused)}
 
-                  {/* {isFocused ? (
-                    <GradientText
-                      colors={gradientColors}
-                      style={styles.textStyle}>
-                      {label}
-                    </GradientText>
-                  ) : ( */}
                   <Typography
                     mT={5}
                     size={12}
-                    color={isFocused ? Colors.purpleV2 : Colors.lightblue}>
+                    color={isFocused ? Colors.lightgreen : Colors.lightblue}>
                     {label}
                   </Typography>
-                  {/* )} */}
 
                   {isFocused && (
                     <Animated.View
@@ -140,16 +133,16 @@ const HomeTabs = () => {
         component={bottomTabConfig.Home.component}
       />
       <HomeTabNavigation.Screen
-        name={bottomTabConfig.Rewards.screenName}
-        component={bottomTabConfig.Rewards.component}
+        name={bottomTabConfig.Products.screenName}
+        component={bottomTabConfig.Products.component}
       />
       <HomeTabNavigation.Screen
-        name={bottomTabConfig.MoneyPot.screenName}
-        component={bottomTabConfig.MoneyPot.component}
+        name={'E'}
+        component={bottomTabConfig.Home.component}
       />
       <HomeTabNavigation.Screen
-        name={bottomTabConfig.Profile.screenName}
-        component={bottomTabConfig.Profile.component}
+        name={'Profile'}
+        component={bottomTabConfig.Products.component}
       />
     </HomeTabNavigation.Navigator>
   );

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Metrix} from '../../config';
+import Metrix from '../../config/metrix';
 import {Colors, shadow} from '../../config/color';
 
 const styles = StyleSheet.create({
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: Metrix.HorizontalSize(56),
     height: Metrix.HorizontalSize(56),
     position: 'absolute',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.lightgreen,
     borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',

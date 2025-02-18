@@ -22,7 +22,7 @@ const BottomTab: React.FC<BottomTabProps> = ({
   return (
     <View style={[styles.container, style]}>
       <Svg>
-        <Path d={PATH[currentFocusedTab]} fill={Colors.primary} />
+        <Path d={PATH[currentFocusedTab]} fill={Colors.white} />
       </Svg>
       {children}
     </View>

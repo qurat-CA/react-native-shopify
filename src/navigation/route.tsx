@@ -27,7 +27,7 @@ const Route = () => {
   const getInitialRouteName = () => {
     // if (user?.authToken && user?.id) {
     if (true) {
-      return Screens.MainNavigation;
+      return Screens.BottomTab;
     }
     return Screens.AuthNavigation;
   };
@@ -42,7 +42,6 @@ const Route = () => {
         name={Screens.AuthNavigation}
         component={AuthNavigation}
       />
-      {/* <RootStack.Screen name={Screens.Drawer} component={DrawerStack} /> */}
       <RootStack.Screen name={Screens.BottomTab} component={MainNavigation} />
     </RootStack.Navigator>
   );
