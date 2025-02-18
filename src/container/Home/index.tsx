@@ -1,11 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {Container, Typography} from '../../components';
+import {Colors} from '../../config/color';
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <Container>
+      <Typography mT={100} bold size={18} color={Colors.primary}>
+        Products
+      </Typography>
+    </Container>
   );
 };
 

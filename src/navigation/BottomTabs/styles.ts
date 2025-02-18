@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: Metrix.HorizontalSize(30),
+    paddingHorizontal: Metrix.HorizontalSize(20),
   },
 
   tabContainer: {

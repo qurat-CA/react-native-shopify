@@ -10,7 +10,6 @@ type BottomTabConfigType = {
     iconGray: string;
     headerShown: boolean;
     label: string;
-    ActiveIcon: JSX.Element;
   };
 };
 
@@ -29,7 +28,6 @@ export const BottomTabConfig = () => {
       iconGray: '1',
       headerShown: false,
       label: 'Home',
-      ActiveIcon: <TAB_SVGS.HomeTab stroke={Colors.green} />,
     },
     Products: {
       screenName: 'Products',
@@ -40,7 +38,6 @@ export const BottomTabConfig = () => {
       iconGray: '1',
       headerShown: false,
       label: 'Rewards',
-      ActiveIcon: <TAB_SVGS.ProfileTabActive />,
     },
   };
   return bottomTabConfig;

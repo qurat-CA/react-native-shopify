@@ -11,27 +11,24 @@ const vh = Dimensions.get('window').height * 0.01;
 interface BottomTabProps {
   children: React.ReactNode;
   style?: ViewStyle;
-  currentFocusedTab: number;
+  // currentFocusedTab: number;
 }
 
-const BottomTab: React.FC<BottomTabProps> = ({
-  children,
-  style,
-  currentFocusedTab,
-}) => {
+const BottomTab: React.FC<BottomTabProps> = ({children, style}) => {
   return (
     <View style={[styles.container, style]}>
-      <Svg>
-        <Path d={PATH[currentFocusedTab]} fill={Colors.white} />
-      </Svg>
+      {/* <Svg>
+        <Path d={PATH[currentFocusedTab]} fill={Colors.primary} />
+      </Svg> */}
       {children}
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    height: vw * 20,
+    height: vw * 18,
     width: vw * 100,
+    backgroundColor: Colors.white,
     ...shadow,
   },
 });
