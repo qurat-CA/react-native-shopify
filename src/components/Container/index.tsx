@@ -1,18 +1,17 @@
 import {StyleSheet, View, ViewStyle} from 'react-native';
 
-import {Colors} from '../../config/color';
-import metrix from '../../config/metrix';
+import {Colors, Metrix} from '../../config';
 
 interface ContainerProps {
   children: React.ReactNode;
   style?: ViewStyle;
-  pT?: number;
+  pH?: number;
   bgColor?: string;
 }
 
 const Container: React.FC<ContainerProps> = ({
   children,
-  pT = 16,
+  pH = 24,
   bgColor = Colors.white,
 }) => {
   return (
@@ -20,7 +19,7 @@ const Container: React.FC<ContainerProps> = ({
       style={[
         styles.main,
         {
-          paddingHorizontal: metrix.HorizontalSize(pT),
+          paddingHorizontal: Metrix.HorizontalSize(pH),
           backgroundColor: bgColor,
         },
       ]}>

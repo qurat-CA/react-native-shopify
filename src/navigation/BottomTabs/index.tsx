@@ -3,9 +3,8 @@ import {TouchableOpacity, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {BottomTabConfig} from './config';
-import {Colors} from '../../config/color/index';
+import {Colors, Metrix} from '../../config';
 import {BottomTab, Typography} from '../../components';
-import Metrix from '../../config/metrix';
 import styles from './styles';
 
 const HomeTabNavigation = createBottomTabNavigator();

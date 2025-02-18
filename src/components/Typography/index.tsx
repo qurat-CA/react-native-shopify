@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, TextStyle, TextProps} from 'react-native';
-import {Colors} from '../../config/color';
-import Metrix from '../../config/metrix';
+import {Colors, Metrix} from '../../config';
 import fonts from '../../config/fonts';
 
 interface TypographyProps extends TextProps {
