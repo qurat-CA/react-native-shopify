@@ -21,7 +21,7 @@ export const BottomTabConfig = () => {
       icon: (isFocused: boolean) => {
         return (
           <TAB_SVGS.HomeTab
-            stroke={isFocused ? Colors.purpleV2 : Colors.black}
+            color={isFocused ? Colors.green : Colors.black}
           />
         );
       },
@@ -32,8 +32,12 @@ export const BottomTabConfig = () => {
     Products: {
       screenName: 'Products',
       component: Products,
-      icon: () => {
-        return <TAB_SVGS.ProfileTab />;
+      icon: (isFocused: boolean) => {
+        return (
+          <TAB_SVGS.ProfileTab
+            color={isFocused ? Colors.green : Colors.textV2}
+          />
+        );
       },
       iconGray: '1',
       headerShown: false,

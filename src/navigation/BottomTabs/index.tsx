@@ -37,8 +37,20 @@ const HomeTabs = () => {
                   onPress={onPress}>
                   {bottomTabConfig[label]?.icon(isFocused)}
 
+                  {isFocused && (
+                    <View
+                      style={{
+                        width: Metrix.HorizontalSize(10),
+                        height: Metrix.VerticalSize(3),
+                        borderRadius: 4,
+                        backgroundColor: Colors.green,
+                        marginTop: Metrix.VerticalSize(4),
+                      }}
+                    />
+                  )}
+
                   <Typography
-                    mT={5}
+                    mT={!isFocused ? 5 : 0}
                     size={12}
                     medium={!isFocused}
                     bold={isFocused}

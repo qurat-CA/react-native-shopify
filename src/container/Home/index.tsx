@@ -1,7 +1,12 @@
 import {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 
-import {Container, ProductCard, Typography} from '../../components';
+import {
+  Container,
+  ProductCard,
+  SearchField,
+  Typography,
+} from '../../components';
 import {Colors, Metrix} from '../../config';
 import {fetchAllProducts} from '../../shopify';
 
@@ -28,7 +33,9 @@ const Home = () => {
 
   return (
     <>
-      <View style={styles.header} />
+      <View style={styles.header}>
+        <SearchField />
+      </View>
 
       <Container>
         <Typography mT={24} bold size={18} color={Colors.primary}>
@@ -68,5 +75,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Metrix.VerticalSize(200),
     backgroundColor: Colors.lightgreen,
+    paddingHorizontal: Metrix.HorizontalSize(24),
   },
 });
