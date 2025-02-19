@@ -1,4 +1,4 @@
-import {StyleSheet, View, ViewStyle} from 'react-native';
+import {ScrollView, StyleSheet, View, ViewStyle} from 'react-native';
 
 import {Colors, Metrix} from '../../config';
 
@@ -7,15 +7,19 @@ interface ContainerProps {
   style?: ViewStyle;
   pH?: number;
   bgColor?: string;
+  scrollView?: boolean;
 }
 
 const Container: React.FC<ContainerProps> = ({
   children,
   pH = 24,
   bgColor = Colors.white,
+  scrollView = false,
 }) => {
+  const Wrapper = scrollView ? ScrollView : View;
   return (
-    <View
+    <Wrapper
+      showsVerticalScrollIndicator={false}
       style={[
         styles.main,
         {
@@ -24,7 +28,7 @@ const Container: React.FC<ContainerProps> = ({
         },
       ]}>
       {children}
-    </View>
+    </Wrapper>
   );
 };
 

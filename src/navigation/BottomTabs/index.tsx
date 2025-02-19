@@ -40,8 +40,9 @@ const HomeTabs = () => {
                   <Typography
                     mT={5}
                     size={12}
-                    medium
-                    color={isFocused ? Colors.lightgreen : Colors.lightblue}>
+                    medium={!isFocused}
+                    bold={isFocused}
+                    color={isFocused ? Colors.green : Colors.textV2}>
                     {label}
                   </Typography>
                 </TouchableOpacity>

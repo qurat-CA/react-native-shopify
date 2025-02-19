@@ -1,7 +1,7 @@
 import Client from 'shopify-buy';
 
 const client = Client.buildClient({
-  domain: 'https://trigwell-cosmetics.myshopify.com',
+  domain: 'trigwell-cosmetics.myshopify.com',
   storefrontAccessToken: '261653571082715695d034a2a159e385',
 });
 

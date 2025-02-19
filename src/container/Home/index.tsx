@@ -1,39 +1,52 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {useEffect, useState} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
 
-import {getProducts} from '../../shopify/api';
 import {Container, ProductCard, Typography} from '../../components';
-import {Colors} from '../../config/color';
-import Metrix from '../../config/metrix';
+import {Colors, Metrix} from '../../config';
+import {fetchAllProducts} from '../../shopify';
+
+interface Product {
+  id: string;
+  title: string;
+  images: {src: string}[];
+}
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await getProducts();
-      setProducts(data);
+    const fetchData = async () => {
+      try {
+        const data = await fetchAllProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching products: ', error);
+      }
     };
-    fetchProducts();
+    fetchData();
   }, []);
 
   return (
-    <Container>
-      <Typography mT={80} bold size={18} color={Colors.primary}>
-        All Products
-      </Typography>
+    <>
+      <View style={styles.header} />
 
-      <FlatList
-        data={products}
-        // keyExtractor={item => item.node.id}
-        numColumns={2}
-        columnWrapperStyle={{justifyContent: 'space-between'}}
-        showsVerticalScrollIndicator={false}
-        renderItem={({item}) => <ProductCard item={item} />}
-        style={styles.flatlist}
-        contentContainerStyle={styles.contentContainer}
-      />
-    </Container>
+      <Container>
+        <Typography mT={24} bold size={18} color={Colors.primary}>
+          All Products
+        </Typography>
+
+        <FlatList
+          data={products}
+          keyExtractor={item => item.id}
+          numColumns={2}
+          columnWrapperStyle={{justifyContent: 'space-between'}}
+          showsVerticalScrollIndicator={false}
+          renderItem={({item}) => <ProductCard item={item} />}
+          style={styles.flatlist}
+          contentContainerStyle={styles.contentContainer}
+        />
+      </Container>
+    </>
   );
 };
 
@@ -49,5 +62,11 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingBottom: Metrix.VerticalSize(75),
     paddingTop: Metrix.VerticalSize(2),
+  },
+
+  header: {
+    width: '100%',
+    height: Metrix.VerticalSize(200),
+    backgroundColor: Colors.lightgreen,
   },
 });

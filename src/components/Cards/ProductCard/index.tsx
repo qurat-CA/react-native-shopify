@@ -1,33 +1,36 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {Colors} from '../../../config/color';
+import {Colors, Metrix} from '../../../config';
 import {Typography} from '../../index';
-import {Metrix} from '../../../config';
 
 interface Props {
   item: [];
 }
 const ProductCard: React.FC<Props> = ({item}) => {
   const navigation = useNavigation();
+
   return (
     <TouchableOpacity
       style={styles.container}
       activeOpacity={Metrix.ActiveOpacity}
       onPress={() =>
-        navigation.navigate('ProductDetail', {productId: item.node.id})
+        navigation.navigate('ProductDetail', {productId: item.id})
       }>
       <Image
-        source={{uri: item.node.variants.edges[0].node.image.src}}
+        source={{uri: item.images[0]?.src}}
         style={{width: 100, height: 100}}
       />
 
       <Typography bold color={Colors.textV2} numberOfLines={1}>
-        {item.node.title}
+        {item.title}
       </Typography>
-      <Typography size={14} medium color={Colors.greyV8}>
-        ${item.node.variants.edges[0].node.priceV2.amount}
-      </Typography>
+
+      {item.variants.length > 0 && (
+        <Typography size={14} medium color={Colors.greyV8}>
+          ${item.variants[0].priceV2?.amount}
+        </Typography>
+      )}
     </TouchableOpacity>
   );
 };
