@@ -18,6 +18,7 @@ const Colors = {
   pinkV2: '#EC1A73',
   darkgreen: '#233c09',
   green: '#57704e',
+  // green: '#fdd9e7',
   lightgreen: '#93a38e',
   grey: '#F6F6F6',
   darkgrey: '#D6DAE34D',

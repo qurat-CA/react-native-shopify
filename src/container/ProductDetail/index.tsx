@@ -2,14 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {Image, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import {Button, Container, Typography} from '../../components';
+import {Button, Container, ImagesCarousel, Typography} from '../../components';
 import {ProductDetailProps} from '../../config/type/navigation';
 import {fetchSingleProduct} from '../../shopify';
 import {Colors, Metrix} from '../../config';
 import {PLACEHOLDER_IMAGE} from '../../config/images';
 import {styles} from './style';
 
-interface Product {
+export interface ProductType {
   id: string;
   title: string;
   description: string;
@@ -19,7 +19,7 @@ interface Product {
 
 const ProductDetail = ({route}: ProductDetailProps) => {
   const {productId} = route.params;
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<ProductType | null>(null);
   const [description, setDescription] = useState<string[]>([]);
 
   useEffect(() => {
@@ -39,8 +39,11 @@ const ProductDetail = ({route}: ProductDetailProps) => {
   }, []);
 
   return (
-    <Container scrollView>
-      {product?.availableForSale && (
+    <>
+      <ImagesCarousel data={product?.images} />
+
+      <Container scrollView>
+        {/* {product?.availableForSale && (
         <View style={styles.saleBadgeCont}>
           <Typography
             mL={-3}
@@ -69,27 +72,28 @@ const ProductDetail = ({route}: ProductDetailProps) => {
           size={18}
           color={Colors.darkgreen}
         />
-      </View>
+      </View> */}
 
-      <Typography mT={20} bold size={22} color={Colors.primary}>
-        {product?.title}
-      </Typography>
+        <Typography mT={20} bold size={22} color={Colors.primary}>
+          {product?.title}
+        </Typography>
 
-      {description.map((desc, i) => {
-        return (
-          <Typography
-            key={i}
-            lineHeight={18}
-            mT={20}
-            size={15}
-            color={Colors.text}>
-            {desc}.
-          </Typography>
-        );
-      })}
+        {description.map((desc, i) => {
+          return (
+            <Typography
+              key={i}
+              lineHeight={18}
+              mT={20}
+              size={15}
+              color={Colors.text}>
+              {desc}.
+            </Typography>
+          );
+        })}
 
-      <Button title="Add to Cart" mT={16} mB={32} />
-    </Container>
+        <Button title="Add to Cart" mT={16} mB={32} />
+      </Container>
+    </>
   );
 };
 

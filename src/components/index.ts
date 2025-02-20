@@ -5,6 +5,7 @@ import ProductCard from './Cards/ProductCard';
 import SearchField from './Fields/SearchField';
 import Flex from './Flex';
 import Button from './Button';
+import ImagesCarousel from './ImagesCarousel';
 
 export {
   BottomTab,
@@ -14,4 +15,5 @@ export {
   SearchField,
   Flex,
   Button,
+  ImagesCarousel,
 };
