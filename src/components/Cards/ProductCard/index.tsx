@@ -1,8 +1,9 @@
 import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import {Colors, Metrix} from '../../../config';
-import {Typography} from '../../index';
+import {Flex, Typography} from '../../index';
 
 export interface Variant {
   priceV2?: {
@@ -44,11 +45,15 @@ const ProductCard: React.FC<Props> = ({item}) => {
         {item.title}
       </Typography>
 
-      {item.variants.length > 0 && (
-        <Typography size={14} medium color={Colors.greyV8}>
-          ${item.variants[0].priceV2?.amount}
-        </Typography>
-      )}
+      <Flex justifyContent="space-between" gap={8} mT={4}>
+        {item.variants.length > 0 && (
+          <Typography size={14} bold color={Colors.greyV8}>
+            £{item.variants[0].priceV2?.amount}
+          </Typography>
+        )}
+
+        <Icon name="arrowright" size={16} color={Colors.greyV8} />
+      </Flex>
     </TouchableOpacity>
   );
 };
