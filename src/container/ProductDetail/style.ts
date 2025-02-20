@@ -18,4 +18,15 @@ export const styles = StyleSheet.create({
     marginTop: 30,
     backgroundColor: 'orange',
   },
+
+  wishlistCont: {
+    width: Metrix.HorizontalSize(45),
+    height: Metrix.HorizontalSize(45),
+    borderRadius: 50,
+    backgroundColor: Colors.lightgreen,
+    position: 'absolute',
+    top: Metrix.VerticalSize(320),
+    right: Metrix.HorizontalSize(0),
+    justifyContent: 'center',
+  },
 });

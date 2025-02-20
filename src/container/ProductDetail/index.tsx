@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Image, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import {Container, Typography} from '../../components';
+import {Button, Container, Typography} from '../../components';
 import {ProductDetailProps} from '../../config/type/navigation';
 import {fetchSingleProduct} from '../../shopify';
 import {Colors, Metrix} from '../../config';
@@ -62,21 +62,11 @@ const ProductDetail = ({route}: ProductDetailProps) => {
         />
       )}
 
-      <View
-        style={{
-          width: Metrix.HorizontalSize(50),
-          height: Metrix.HorizontalSize(50),
-          borderRadius: 50,
-          backgroundColor: Colors.lightgreen,
-          position: 'absolute',
-          top: Metrix.VerticalSize(320),
-          right: Metrix.HorizontalSize(0),
-          justifyContent: 'center',
-        }}>
+      <View style={styles.wishlistCont}>
         <Icon
           name="hearto"
           style={{textAlign: 'center'}}
-          size={22}
+          size={18}
           color={Colors.darkgreen}
         />
       </View>
@@ -97,6 +87,8 @@ const ProductDetail = ({route}: ProductDetailProps) => {
           </Typography>
         );
       })}
+
+      <Button title="Add to Cart" mT={16} mB={32} />
     </Container>
   );
 };
