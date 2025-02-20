@@ -22,3 +22,6 @@ export const SVGS = {
 export const Images = {
   dummyImage,
 };
+
+export const PLACEHOLDER_IMAGE =
+  'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg';

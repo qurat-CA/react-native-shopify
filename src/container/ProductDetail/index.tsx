@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, View} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
+
 import {Container, Typography} from '../../components';
 import {ProductDetailProps} from '../../config/type/navigation';
 import {fetchSingleProduct} from '../../shopify';
-import {Colors} from '../../config';
+import {Colors, Metrix} from '../../config';
+import {PLACEHOLDER_IMAGE} from '../../config/images';
+import {styles} from './style';
 
 interface Product {
   id: string;
   title: string;
   description: string;
   images: {src: string}[];
+  availableForSale?: boolean;
 }
 
 const ProductDetail = ({route}: ProductDetailProps) => {
   const {productId} = route.params;
   const [product, setProduct] = useState<Product | null>(null);
-
   const [description, setDescription] = useState<string[]>([]);
 
   useEffect(() => {
@@ -36,23 +40,46 @@ const ProductDetail = ({route}: ProductDetailProps) => {
 
   return (
     <Container scrollView>
+      {product?.availableForSale && (
+        <View style={styles.saleBadgeCont}>
+          <Typography
+            mL={-3}
+            textAlign="center"
+            medium
+            size={15}
+            color={Colors.black}>
+            Sale
+          </Typography>
+        </View>
+      )}
       {product?.images && product?.images.length > 0 ? (
-        <Image
-          source={{uri: product.images[0].src}}
-          style={{
-            width: '100%',
-            height: 300,
-            marginTop: 30,
-            backgroundColor: 'orange',
-          }}
-        />
+        <Image source={{uri: product.images[0].src}} style={styles.img} />
       ) : (
         <Image
           source={{
-            uri: 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg',
+            uri: PLACEHOLDER_IMAGE,
           }}
         />
       )}
+
+      <View
+        style={{
+          width: Metrix.HorizontalSize(50),
+          height: Metrix.HorizontalSize(50),
+          borderRadius: 50,
+          backgroundColor: Colors.lightgreen,
+          position: 'absolute',
+          top: Metrix.VerticalSize(320),
+          right: Metrix.HorizontalSize(0),
+          justifyContent: 'center',
+        }}>
+        <Icon
+          name="hearto"
+          style={{textAlign: 'center'}}
+          size={22}
+          color={Colors.darkgreen}
+        />
+      </View>
 
       <Typography mT={20} bold size={22} color={Colors.primary}>
         {product?.title}
@@ -75,5 +102,3 @@ const ProductDetail = ({route}: ProductDetailProps) => {
 };
 
 export default ProductDetail;
-
-const styles = StyleSheet.create({});

@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react';
-import {FlatList, Image, View} from 'react-native';
+import {FlatList, Image, TouchableOpacity, View} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {
   Container,
@@ -8,7 +10,7 @@ import {
   SearchField,
   Typography,
 } from '../../components';
-import {Colors} from '../../config';
+import {Colors, Metrix} from '../../config';
 import {fetchAllProducts} from '../../shopify';
 import {Images} from '../../config/images';
 import {styles} from './style';
@@ -37,18 +39,38 @@ const Home = () => {
   return (
     <>
       <View style={styles.header}>
-        <Flex gap={16} mT={16}>
-          <Image source={Images.dummyImage} style={styles.imageStyle} />
+        <Flex mT={16} justifyContent="space-between">
+          <Flex gap={16}>
+            <Image source={Images.dummyImage} style={styles.imageStyle} />
 
-          <View style={{width: '50%'}}>
-            <Typography light size={14} color={Colors.black}>
-              Good Morning 👋
-            </Typography>
+            <View style={{width: '50%'}}>
+              <Typography light size={14} color={Colors.black}>
+                Good Morning 👋
+              </Typography>
 
-            <Typography size={18} mT={4} bold color={Colors.black}>
-              Qurat ul Ain
-            </Typography>
-          </View>
+              <Typography size={18} mT={4} bold color={Colors.black}>
+                Qurat ul Ain
+              </Typography>
+            </View>
+          </Flex>
+
+          <TouchableOpacity
+            activeOpacity={Metrix.ActiveOpacity}
+            onPress={() => {}}
+            style={styles.notificationCont}>
+            <Icon name="shoppingcart" size={20} color={Colors.black} />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            activeOpacity={Metrix.ActiveOpacity}
+            onPress={() => {}}
+            style={styles.notificationCont}>
+            <MaterialIcons
+              name="notifications-none"
+              size={20}
+              color={Colors.black}
+            />
+          </TouchableOpacity>
         </Flex>
 
         <SearchField />

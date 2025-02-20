@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
 
   header: {
     width: '100%',
-    height: Metrix.VerticalSize(180),
+    height: Metrix.VerticalSize(170),
     backgroundColor: Colors.lightgreen,
     paddingHorizontal: Metrix.HorizontalSize(24),
   },
@@ -32,5 +32,14 @@ export const styles = StyleSheet.create({
     width: Metrix.HorizontalSize(45),
     height: Metrix.VerticalSize(45),
     borderRadius: Metrix.Radius,
+  },
+
+  notificationCont: {
+    width: Metrix.HorizontalSize(40),
+    height: Metrix.VerticalSize(40),
+    borderRadius: Metrix.Radius,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
