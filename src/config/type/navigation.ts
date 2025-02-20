@@ -8,7 +8,7 @@ export type RootStackParamList = {
 
 export type AppStackParamList = {
   HomeTabs: undefined;
-  Home: {productId: number};
+  Home: {productId: string};
 };
 
 export type NavigationStackType<T extends ParamListBase = RootStackParamList> =

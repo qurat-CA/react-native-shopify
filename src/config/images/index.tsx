@@ -6,6 +6,7 @@ import HomeTabActive from '../../assets/images/home-tab-active.svg';
 import ProfileTab from '../../assets/images/profile-tab.svg';
 import ProfileTabActive from '../../assets/images/profile-tab-active.svg';
 
+import dummyImage from '../../assets/images/dummyImage.jpeg';
 
 export const TAB_SVGS = {
   HomeTab,
@@ -16,4 +17,8 @@ export const TAB_SVGS = {
 
 export const SVGS = {
   SearchIcon,
+};
+
+export const Images = {
+  dummyImage,
 };

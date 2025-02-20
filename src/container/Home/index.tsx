@@ -1,14 +1,17 @@
 import {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, Image, View} from 'react-native';
 
 import {
   Container,
+  Flex,
   ProductCard,
   SearchField,
   Typography,
 } from '../../components';
-import {Colors, Metrix} from '../../config';
+import {Colors} from '../../config';
 import {fetchAllProducts} from '../../shopify';
+import {Images} from '../../config/images';
+import {styles} from './style';
 
 interface Product {
   id: string;
@@ -34,6 +37,20 @@ const Home = () => {
   return (
     <>
       <View style={styles.header}>
+        <Flex gap={16} mT={16}>
+          <Image source={Images.dummyImage} style={styles.imageStyle} />
+
+          <View style={{width: '50%'}}>
+            <Typography light size={14} color={Colors.black}>
+              Good Morning 👋
+            </Typography>
+
+            <Typography size={18} mT={4} bold color={Colors.black}>
+              Qurat ul Ain
+            </Typography>
+          </View>
+        </Flex>
+
         <SearchField />
       </View>
 
@@ -58,23 +75,3 @@ const Home = () => {
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  flatlist: {
-    paddingHorizontal: Metrix.HorizontalSize(5),
-    marginHorizontal: Metrix.HorizontalSize(-5),
-    marginTop: Metrix.VerticalSize(22),
-  },
-
-  contentContainer: {
-    paddingBottom: Metrix.VerticalSize(75),
-    paddingTop: Metrix.VerticalSize(2),
-  },
-
-  header: {
-    width: '100%',
-    height: Metrix.VerticalSize(200),
-    backgroundColor: Colors.lightgreen,
-    paddingHorizontal: Metrix.HorizontalSize(24),
-  },
-});

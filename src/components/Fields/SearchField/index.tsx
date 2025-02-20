@@ -1,13 +1,13 @@
 import {StyleSheet, TextInput} from 'react-native';
 
 import {Colors, fonts, Metrix, SVGS} from '../../../config';
-import { Flex } from '../..';
+import {Flex} from '../..';
 
 interface SearchFieldProps {
-  value: string;
-  onChange: (text: string) => void;
+  value?: string;
+  onChange?: (text: string) => void;
   onSubmitEditing?: () => void;
-  placeholder: string;
+  placeholder?: string;
   error?: string;
 }
 
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Metrix.VerticalSize(56),
     backgroundColor: Colors.white,
-    marginTop: Metrix.VerticalSize(32),
+    marginTop: Metrix.VerticalSize(24),
     borderRadius: 16,
     flexDirection: 'row',
     alignItems: 'center',

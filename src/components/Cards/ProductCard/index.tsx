@@ -4,9 +4,27 @@ import {useNavigation} from '@react-navigation/native';
 import {Colors, Metrix} from '../../../config';
 import {Typography} from '../../index';
 
-interface Props {
-  item: [];
+export interface Variant {
+  priceV2?: {
+    amount: string;
+  };
 }
+
+interface ImageData {
+  src: string;
+}
+
+interface ProductItem {
+  id: string;
+  images: ImageData[];
+  title: string;
+  variants: Variant[];
+}
+
+interface Props {
+  item: ProductItem;
+}
+
 const ProductCard: React.FC<Props> = ({item}) => {
   const navigation = useNavigation();
 

@@ -16,7 +16,7 @@ const ProductDetail = ({route}: ProductDetailProps) => {
   const {productId} = route.params;
   const [product, setProduct] = useState<Product | null>(null);
 
-  const [description, setDescription] = useState([]);
+  const [description, setDescription] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,7 +60,12 @@ const ProductDetail = ({route}: ProductDetailProps) => {
 
       {description.map((desc, i) => {
         return (
-          <Typography lineHeight={18} mT={20} size={15} color={Colors.text}>
+          <Typography
+            key={i}
+            lineHeight={18}
+            mT={20}
+            size={15}
+            color={Colors.text}>
             {desc}.
           </Typography>
         );
