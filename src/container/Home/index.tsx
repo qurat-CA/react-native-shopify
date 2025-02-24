@@ -14,6 +14,8 @@ import {Colors, Metrix} from '../../config';
 import {fetchAllProducts} from '../../shopify';
 import {Images} from '../../config/images';
 import {styles} from './style';
+import {useQuery} from '@apollo/client';
+import {GET_PRODUCTS} from '../../graphQL';
 
 interface Product {
   id: string;
@@ -23,18 +25,24 @@ interface Product {
 
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const {data, error, loading} = useQuery(GET_PRODUCTS);
+  console.log('dataaaa', data);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAllProducts();
-        setProducts(data);
-      } catch (error) {
-        console.error('Error fetching products: ', error);
-      }
-    };
-    fetchData();
-  }, []);
+    setProducts(data?.products?.edges);
+  }, [data]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await fetchAllProducts();
+  //       setProducts(data);
+  //     } catch (error) {
+  //       console.error('Error fetching products: ', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <>

@@ -8,6 +8,8 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import NavigationService from './src/config/service/navigation';
 import Route from './src/navigation/route';
 import {Colors} from './src/config';
+import {ApolloProvider} from '@apollo/client';
+import client from './src/apolloClient';
 
 const App = () => {
   return (
@@ -21,9 +23,11 @@ const App = () => {
         />
 
         <GestureHandlerRootView style={styles.container}>
-          <NavigationContainer ref={NavigationService.navigationRef}>
-            <Route />
-          </NavigationContainer>
+          <ApolloProvider client={client}>
+            <NavigationContainer ref={NavigationService.navigationRef}>
+              <Route />
+            </NavigationContainer>
+          </ApolloProvider>
         </GestureHandlerRootView>
       </SafeAreaView>
     </React.Fragment>

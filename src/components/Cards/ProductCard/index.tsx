@@ -28,27 +28,31 @@ interface Props {
 
 const ProductCard: React.FC<Props> = ({item}) => {
   const navigation = useNavigation();
+  const data = item?.node;
+  const imageData = item?.node?.images?.edges;
+
+  console.log(item?.node?.variants?.edges[0]?.node?.priceV2?.amount);
 
   return (
     <TouchableOpacity
       style={styles.container}
       activeOpacity={Metrix.ActiveOpacity}
       onPress={() =>
-        navigation.navigate('ProductDetail', {productId: item.id})
+        navigation.navigate('ProductDetail', {productId: data.id})
       }>
       <Image
-        source={{uri: item.images[0]?.src}}
+        source={{uri: imageData[0]?.node?.src}}
         style={{width: 100, height: 100}}
       />
 
       <Typography bold color={Colors.textV2} numberOfLines={1}>
-        {item.title}
+        {data.title}
       </Typography>
 
       <Flex justifyContent="space-between" gap={8} mT={4}>
-        {item.variants.length > 0 && (
+        {item?.node?.variants?.edges?.length > 0 && (
           <Typography size={14} bold color={Colors.greyV8}>
-            £{item.variants[0].priceV2?.amount}
+            £{item?.node?.variants?.edges[0]?.node?.priceV2?.amount}
           </Typography>
         )}
 
