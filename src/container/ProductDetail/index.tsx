@@ -1,12 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {Image, View} from 'react-native';
+import {useEffect, useState} from 'react';
+import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import {Button, Container, ImagesCarousel, Typography} from '../../components';
 import {ProductDetailProps} from '../../config/type/navigation';
 import {fetchSingleProduct} from '../../shopify';
-import {Colors, Metrix} from '../../config';
-import {PLACEHOLDER_IMAGE} from '../../config/images';
+import {Colors} from '../../config';
 import {styles} from './style';
 
 export interface ProductType {
@@ -40,40 +39,30 @@ const ProductDetail = ({route}: ProductDetailProps) => {
 
   return (
     <>
-      <ImagesCarousel data={product?.images} />
-
       <Container scrollView>
-        {/* {product?.availableForSale && (
-        <View style={styles.saleBadgeCont}>
-          <Typography
-            mL={-3}
-            textAlign="center"
-            medium
-            size={15}
-            color={Colors.black}>
-            Sale
-          </Typography>
+        <ImagesCarousel data={product?.images} />
+
+        {product?.availableForSale && (
+          <View style={styles.saleBadgeCont}>
+            <Typography
+              mL={-3}
+              textAlign="center"
+              medium
+              size={15}
+              color={Colors.black}>
+              Sale
+            </Typography>
+          </View>
+        )}
+
+        <View style={styles.wishlistCont}>
+          <Icon
+            name="hearto"
+            style={{textAlign: 'center'}}
+            size={18}
+            color={Colors.darkgreen}
+          />
         </View>
-      )}
-      {product?.images && product?.images.length > 0 ? (
-        <Image source={{uri: product.images[0].src}} style={styles.img} />
-      ) : (
-        <Image
-          source={{
-            uri: PLACEHOLDER_IMAGE,
-          }}
-        />
-      )}
-
-      <View style={styles.wishlistCont}>
-        <Icon
-          name="hearto"
-          style={{textAlign: 'center'}}
-          size={18}
-          color={Colors.darkgreen}
-        />
-      </View> */}
-
         <Typography mT={20} bold size={22} color={Colors.primary}>
           {product?.title}
         </Typography>
@@ -91,7 +80,7 @@ const ProductDetail = ({route}: ProductDetailProps) => {
           );
         })}
 
-        <Button title="Add to Cart" mT={16} mB={32} />
+        <Button title="Add to Cart" mT={24} mB={32} />
       </Container>
     </>
   );

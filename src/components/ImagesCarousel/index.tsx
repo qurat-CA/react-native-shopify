@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 
+import {Metrix} from '../../config';
 import {styles} from './style';
 
 interface ImageItem {
@@ -18,7 +19,7 @@ const ImagesCarousel = ({data}: any) => {
   const flatlistRef = useRef<FlatList<any>>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const scrollToIndex = (index: number) => {
+  const scrollToIndexx = (index: number) => {
     console.log('function called');
     flatlistRef?.current?.scrollToIndex({animated: true, index: index});
     setCurrentIndex(index);
@@ -33,11 +34,12 @@ const ImagesCarousel = ({data}: any) => {
   return (
     <>
       <FlatList
-        style={{flex: 1}}
         ref={flatlistRef}
         data={data || []}
         horizontal
         pagingEnabled
+        style={{marginHorizontal: Metrix.HorizontalSize(-24)}}
+        showsHorizontalScrollIndicator={false}
         onScroll={scrollHandler}
         renderItem={({item}) => {
           return (
@@ -55,7 +57,7 @@ const ImagesCarousel = ({data}: any) => {
             <TouchableOpacity
               key={i}
               onPress={() => {
-                scrollToIndex(i);
+                scrollToIndexx(i);
               }}>
               <Image source={{uri: obj.src}} style={styles.smallImg} />
               {currentIndex !== i && <View style={styles.overlay}></View>}
